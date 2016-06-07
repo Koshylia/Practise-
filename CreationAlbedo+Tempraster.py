@@ -1,6 +1,7 @@
 import math
 import arcpy
 from arcpy.sa import *
+import re
 Path=r"C:\Users\K\Desktop\Practise\LC81810262015304LGN00_MTL.txt"
 MetaFile="LC81810262015304LGN00_MTL.txt"
 def readMTL(Path):
@@ -9,12 +10,13 @@ def readMTL(Path):
     return  aString
 
 def tempDef(NumOftheBand,Textparameter,Path):
-    a= readMTL(Path).find(str(Textparameter)+str(NumOftheBand))
-    aSt=readMTL(Path)[a:]
-    b=aSt.find("  ")
-    Parameterline=readMTL(Path)[a:a+b]
-    ParameterList=Parameterline.split(" ")
-    Parameter=float(ParameterList[-1])
+    a = readMTL(Path)
+    regexp=str(Textparameter)+str(NumOftheBand)+" = ([-0-9.]+)"
+    print regexp
+    stuff = re.findall(regexp, a)
+    print stuff
+    if len(stuff)== 1:
+        Parameter = float(stuff[0])
     return Parameter
 
 def workSpace(overwrite,workspace):
@@ -60,3 +62,6 @@ def creationAlbedoRaster(NumOftheBand):
     d=tempDef("", "EARTH_SUN_DISTANCE",Path)
     outrast=(math.pi*calculateRadiation(NumOftheBand,Rasterband)*d**2)/(E(NumOftheBand)*(math.sin(Eta*math.pi/180)))
     outrast.save("albedo"+numOfPhoto(MetaFile)+str(NumOftheBand)+".tif")
+
+#tempDef("","SUN_ELEVATION",Path)
+#creationAlbedoRaster(5)
