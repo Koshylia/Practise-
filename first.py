@@ -1,6 +1,6 @@
 import re
-hand = open(r"E:\DZZ\practice\LC81810252016147LGN00\LC81810252016147LGN00_MTL.txt")
 def(NumOftheBand,Textparameter):
+    hand = open(r"E:\DZZ\practice\LC81810252016147LGN00\LC81810252016147LGN00_MTL.txt")
     a=hand.read()
     regexp=str(Textparameter)+str(NumOftheBand)+" = ([-+0-9.]+)"
     print regexp
