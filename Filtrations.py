@@ -3,7 +3,7 @@ from arcpy.sa import *
 import numpy
 
 Rasterband= r"C:\Users\K\Desktop\Practise\vush30m"
-RasterName = "srtm_bz"
+RasterName = "vush30m"
 
 
 def workSpace(overwrite, workspace):
