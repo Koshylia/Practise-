@@ -1,0 +1,12 @@
+<application>
+  <component name="UISettings">
+    <option name="FONT_FACE" value="Segoe UI Symbol" />
+    <option name="HIDE_TOOL_STRIPES" value="false" />
+    <option name="WIDESCREEN_SUPPORT" value="true" />
+    <option name="SHOW_MAIN_TOOLBAR" value="true" />
+    <option name="COLOR_BLINDNESS" value="deuteranopia" />
+    <option name="MOVE_MOUSE_ON_DEFAULT_BUTTON" value="true" />
+    <option name="OVERRIDE_NONIDEA_LAF_FONTS" value="true" />
+    <option name="PRESENTATION_MODE_FONT_SIZE" value="36" />
+  </component>
+</application>
