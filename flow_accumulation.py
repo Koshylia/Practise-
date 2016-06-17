@@ -1,7 +1,7 @@
 from itertools import product
 import numpy as np
 import arcpy
-input_raster = "D:\\Practica\\SingleflowFilterVush30m.tif.tif"
+input_raster = "D:\Practica\inputRaster.tif"
 
 raster = arcpy.Raster(input_raster)
 coner = arcpy.Point(raster.extent.XMin, raster.extent.YMin)
@@ -26,12 +26,12 @@ def AcumulacionCelda(x,y):
          (1, 1)  :  32}
 
     if Acum[x, y] == None:
-        Acum[x, y] = 1
+        Acum[x, y] = 0
         for m, n in product(range(-1, 2), range(-1, 2)):
             if (0 <= x+m < len(Direcciones)) and (0 <= y+n < len(Direcciones[0])):
                 if Direcciones[x+m, y+n] == d[m, n]:
                     AcumulacionCelda(x+m, y+n)
-                    Acum[x, y] += Acum[x+m, y+n]
+                    Acum[x, y] += Acum[x+m, y+n] + 1
 
 
 for i, j in product(range(0, len(Direcciones)), range(0, len(Direcciones[0]))):
@@ -40,6 +40,6 @@ for i, j in product(range(0, len(Direcciones)), range(0, len(Direcciones[0]))):
 Accumlation = np.array(Acum, dtype=int)
 
 myRaster = arcpy.NumPyArrayToRaster(Accumlation, lower_left_corner=coner, x_cell_size=selsize)
-myRaster.save("D:\\Practica\\AccamulationVush30m.tif")
+myRaster.save("D:\\Practica\\outputRaster.tif")
 
 print "End"
