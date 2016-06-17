@@ -1,7 +1,7 @@
 from itertools import product
 import numpy as np
 import arcpy
-input_raster = "D:\Practica\inputRaster.tif"
+input_raster = "D:\Practica\SingleflowFilterVush30m.tif.tif"
 
 raster = arcpy.Raster(input_raster)
 coner = arcpy.Point(raster.extent.XMin, raster.extent.YMin)
@@ -40,6 +40,6 @@ for i, j in product(range(0, len(Direcciones)), range(0, len(Direcciones[0]))):
 Accumlation = np.array(Acum, dtype=int)
 
 myRaster = arcpy.NumPyArrayToRaster(Accumlation, lower_left_corner=coner, x_cell_size=selsize)
-myRaster.save("D:\\Practica\\outputRaster.tif")
+myRaster.save("D:\\Practica\\AccumulationVush.tif")
 
-print "End"
+#print Accumlation
