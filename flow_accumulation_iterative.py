@@ -50,7 +50,7 @@ def AcumulacionCelda(x,y):
 for i, j in product(range(0, len(Direcciones)), range(0, len(Direcciones[0]))):
     AcumulacionCelda(i, j)
 
-Accumlation = np.array(Acum, dtype=float)
+Accumlation = np.array(Acum, dtype=int)
 
 myRaster = arcpy.NumPyArrayToRaster(Accumlation, lower_left_corner=coner, x_cell_size=selsize)
 myRaster.save("D:\\Practica\\AccamulationVush30m_iteretive_metod.tif")
